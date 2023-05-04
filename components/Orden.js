@@ -5,7 +5,7 @@ import React from 'react'
 import { toast } from 'react-toastify'
 import useSWR from 'swr'
 
-function Orden({orden}) {
+function Orden({orden,ordenDespachada}) {
  
     const {id,nombre,total,pedido}=orden
     
@@ -44,12 +44,12 @@ function Orden({orden}) {
                 <p className='mt-5 font-black text-4xl text-amber-500'>
                     Total a pagar: {formatearDinero(total)}
                 </p>
-                <button className='p-3 bg-indigo-600 text-white font-bold mt-5 md:mt-0 py-3 px-10 uppercase  rounded-md hover:bg-indigo-700' 
+                {ordenDespachada===false ?<button className='p-3 bg-indigo-600 text-white font-bold mt-5 md:mt-0 py-3 px-10 uppercase  rounded-md hover:bg-indigo-700' 
                 type='button'
                 onClick={()=>completarOrden()}
                 >
                     Despachar orden
-                </button>
+                </button> : ''}
         </div>
 
     </div>
